@@ -4,7 +4,7 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
         fileHandle double            % File handle to the file where the CIF data should be written to
     end
     
-    methods (Access = protected)
+    methods (Access = protected, Hidden)
         function obj = write(obj, line)
             % write Write the generated line to the CIF file
             arguments

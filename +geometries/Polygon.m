@@ -61,10 +61,6 @@ classdef Polygon < geometries.Geometry
             % Create the polygon data
             polyString = join(join(string(obj.coords), " "), " ");
             
-            if(obj.coords(1,1) ~= obj.coords(end, 1) && obj.coords(1,2) ~= obj.coords(end, 2))
-                polyString = polyString + sprintf(" %i %i", obj.coords(1,1), obj.coords(1,2));
-            end
-            
             obj.write(sprintf("P %s;", polyString));
         end
     end
