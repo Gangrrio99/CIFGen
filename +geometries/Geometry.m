@@ -11,17 +11,12 @@ classdef (Abstract) Geometry < definitions.CIFWriter & matlab.mixin.Heterogeneou
         function obj = Geometry(fileHandle, layer)
             arguments
                 fileHandle int32        % The file handle to the CIF file
-                layer definitions.Layer % The layer the geomettry uses
+                layer definitions.Layer % The layer the geometry uses
             end
             
             obj = obj@definitions.CIFWriter(fileHandle);
             
             obj.layer = layer;
         end
-    end
-    
-    % Hide all handle methods
-    methods (Hidden)
-        
     end
 end

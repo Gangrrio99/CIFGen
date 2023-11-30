@@ -35,5 +35,30 @@ classdef Layer < definitions.CIFWriter
             
             obj.write(line);
         end
+        
+        function obj = printLayer(obj)
+            % PRINTLAYER Print the layer in a symbol
+            line = sprintf("L L%i;", obj.layerId);
+            
+            obj.write(line);
+        end
+        
+        function iseq = eq(obj, layer)
+            arguments
+                obj definitions.Layer
+                layer definitions.Layer
+            end
+            
+            iseq = obj.layerId == layer.layerId && strcmp(obj.name, layer.name);
+        end
+        
+        function isneq = neq(obj, layer)
+            arguments
+                obj definitions.Layer
+                layer definitions.Layer
+            end
+            
+            isneq = ~obj.eq(obj, layer);
+        end
     end
 end

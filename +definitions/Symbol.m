@@ -32,7 +32,7 @@ classdef Symbol < definitions.CIFWriter
             [aFactor, bFactor] = rat(factor);
             
             % Variable that stores the last layer ID
-            lastLayer = -1;
+            lastLayer = definitions.Layer.NoLayer();
             
             % First, write the symbol header
             symbolHeader = sprintf("DS%i %i %i;", obj.symbolId, aFactor, bFactor);
@@ -45,7 +45,7 @@ classdef Symbol < definitions.CIFWriter
             for geometry = obj.geometries
                 geometry.printFile(lastLayer);
                 
-                lastLayer = geometry.layer.layerId;
+                lastLayer = geometry.layer;
             end
             
             % Write the close keyword
@@ -64,6 +64,20 @@ classdef Symbol < definitions.CIFWriter
             
             % And add it to the list of geometries
             obj.geometries(end+1) = csObj;
+        end
+        
+        function pObj = polygon(obj, layer, initialXYs)
+            arguments
+                obj definitions.Symbol
+                layer definitions.Layer         % The layer the geomettry uses
+                initialXYs (:, 2) int32 = []    % Optional list with x and y coordinates of the polygon path
+            end
+            
+            % Create the geometry
+            pObj = geometries.Polygon(obj.fileHandle, layer, initialXYs);
+            
+            % And add it to the list of geometries
+            obj.geometries(end+1) = pObj;
         end
     end
 end
