@@ -1,0 +1,7 @@
+{
+  "name": "CIFGen",
+  "version": "0.0.0",
+  "description": "Package that allows the user to create CIF files in a more maintainable and modular matter.",
+  "author": "Daan Roos",
+  "dependencies": {}
+}
