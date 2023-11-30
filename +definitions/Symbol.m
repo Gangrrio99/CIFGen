@@ -20,7 +20,7 @@ classdef Symbol < definitions.CIFWriter
             obj = obj@definitions.CIFWriter(fileHandle);
             
             obj.symbolId = symbolId;
-            obj.name = name;
+            obj.name = strrep(name, " ", "_");  % Replace all whitespaces by _
             obj.normalization = normalization;
         end
         
