@@ -91,8 +91,8 @@ classdef Symbol < definitions.CIFWriter
             arguments
                 obj definitions.Symbol
                 layer definitions.Layer         % The layer the geomettry uses
-                length uint32                   % The length of the box
-                width uint32                    % The width of the box
+                length (1, 1) uint32                   % The length of the box
+                width (1, 1) uint32                    % The width of the box
                 center (1, 2) int32             % The center of the box
                 direction (1, 2) int32 = [1, 0] % The direction the box is looking at, perpendicular to the width
             end
@@ -102,6 +102,22 @@ classdef Symbol < definitions.CIFWriter
             
             % And add it to the list of geometries
             obj.geometries(end+1) = bObj;
+        end
+        
+        function rObj = createRoundFlash(obj, layer, diameter, center)
+            % CREATEROUNDFLASH Create a circle and add it to the symbol
+            arguments
+                obj definitions.Symbol
+                layer definitions.Layer         % The layer the geomettry uses
+                diameter (1, 1) uint32          % The diameter of the round flash
+                center (1, 2) int32             % The center of the round flash
+            end
+            
+            % Create the geometry
+            rObj = geometries.RoundFlash(obj.fileHandle, layer, diameter, center); %#ok<PROPLC>
+            
+            % And add it to the list of geometries
+            obj.geometries(end+1) = rObj;
         end
     end
 end
