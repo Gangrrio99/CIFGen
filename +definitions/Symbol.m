@@ -119,5 +119,20 @@ classdef Symbol < definitions.CIFWriter
             % And add it to the list of geometries
             obj.geometries(end+1) = rObj;
         end
+        
+        function wObj = createWire(obj, layer, initialXYs)
+            % CREATEWIRE Create a wire and add it to the symbol
+            arguments
+                obj definitions.Symbol
+                layer definitions.Layer         % The layer the geomettry uses
+                initialXYs (:, 2) int32 = []    % Optional list with x and y coordinates of the wire path
+            end
+            
+            % Create the geometry
+            wObj = geometries.Wire(obj.fileHandle, layer, initialXYs); %#ok<PROPLC>
+            
+            % And add it to the list of geometries
+            obj.geometries(end+1) = wObj;
+        end
     end
 end
