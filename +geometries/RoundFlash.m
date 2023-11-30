@@ -7,6 +7,12 @@ classdef RoundFlash < geometries.Geometry
     
     methods
         function obj = RoundFlash(fileHandle, layer, diameter, center)
+            % ROUNDFLASH Create an instance of the RoundFlash Geometry
+            % Inputs:
+            %   - fileHandle: The file handle to the CIF file
+            %   - layer: The layer the geomettry uses
+            %   - diameter: The diameter of the round flash
+            %   - center: The center of the round flash
             arguments
                 fileHandle int32                % The file handle to the CIF file
                 layer definitions.Layer         % The layer the geomettry uses
@@ -22,6 +28,8 @@ classdef RoundFlash < geometries.Geometry
         
         function obj = setDiameter(obj, diameter)
             % SETDIAMETER Set the diameter of the circle
+            % Inputs:
+            %   - diameter: The diameter of the round flash
             arguments
                 obj geometries.RoundFlash
                 diameter (1, 1) uint32          % The diameter of the round flash
@@ -32,6 +40,7 @@ classdef RoundFlash < geometries.Geometry
         
         function obj = setCenter(obj, center)
             % SETCENTER Set the center of the circle
+            %   - center: The center of the circle
             arguments
                 obj geometries.RoundFlash
                 center (1, 2) int32             % The center of the round flash

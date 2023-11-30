@@ -6,6 +6,9 @@ classdef Mirror < geometries.callSymbol.Transformation
     
     methods
         function obj = Mirror(overAxis)
+            % MIRROR Create an instance of the Mirror transformation
+            % Inputs:
+            %   - overAxis: The axis to mirror over ("X" or "Y")
             arguments
                 overAxis string {ismember(overAxis, ["X", "Y"])} % The axis to mirror over
             end

@@ -6,6 +6,11 @@ classdef Wire < geometries.Geometry
     
     methods
         function obj = Wire(fileHandle, layer, initialXYs)
+            % WIRE Create an instance of the wire geometry
+            % Inputs:
+            %   - fileHandle: The file handle to the CIF file
+            %   - layer: The layer the geomettry uses
+            %   - initialXYs: Optional list with x and y coordinates of the wire path [x(:), y(:)]
             arguments
                 fileHandle int32                % The file handle to the CIF file
                 layer definitions.Layer         % The layer the geomettry uses
@@ -19,6 +24,9 @@ classdef Wire < geometries.Geometry
         
         function obj = addPoint(obj, pointX, pointY)
             % ADDPOINT Add a single point to the wire structure
+            % Inputs:
+            %   - pointX: The x coordinate of the point
+            %   - pointY: The y coordinate of the point
             arguments
                 obj geometries.Wire
                 pointX (1, 1) int32
@@ -30,6 +38,9 @@ classdef Wire < geometries.Geometry
         
         function obj = addPoints(obj, pointsX, pointsY)
             % ADDPOINTS Add multiple points to the wire structure
+            % Inputs:
+            %   - pointsX: The x coordinates of the points
+            %   - pointsY: The y coordinates of the points
             arguments
                 obj geometries.Wire
                 pointsX (:, 1) int32

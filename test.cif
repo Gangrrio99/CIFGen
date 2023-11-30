@@ -3,7 +3,7 @@
 L L1; (CleWin: 1 Layer 1/0f808080 0f808080);
 L L2; (CleWin: 2 Layer 2/0f808080 0f808080);
 (Symbol definitions);
-DS1 1 1000;
+DS1 1 10;
 9 Symbol_1;
 L L1;
 B 3 2 -1 -2 1 0;
@@ -13,7 +13,7 @@ L L2;
 R 5 3 -3;
 DF;
 (Symbol that will include another symbol);
-DS2 1 1000;
+DS2 1 10;
 9 Symbol_2;
 C1 M X T 4 4 R 3 2;
 DF;

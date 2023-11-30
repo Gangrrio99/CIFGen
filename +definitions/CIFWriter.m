@@ -56,6 +56,8 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
         
         function obj = addComment(obj, comment)
             % ADDCOMMENT Add a comment to the list. Will print the comment next time CIFWriter.write is called
+            % Inputs:
+            %   - comment: The comment to add to the list
             arguments
                 obj definitions.CIFWriter
                 comment string

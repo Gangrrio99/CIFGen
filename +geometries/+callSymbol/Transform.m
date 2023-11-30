@@ -7,6 +7,10 @@ classdef Transform < geometries.callSymbol.Transformation
     
     methods
         function obj = Transform(toX, toY)
+            % TRANSFORM Create an instance of the transform transformation
+            % Inputs:
+            %   - toX: The x location to transform to
+            %   - toY: The y location to transform to
             arguments
                 toX (1, 1) int32                   % The x location to transform to
                 toY (1, 1) int32                   % The y location to transform to

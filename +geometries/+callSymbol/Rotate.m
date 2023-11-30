@@ -7,6 +7,10 @@ classdef Rotate < geometries.callSymbol.Transformation
     
     methods
         function obj = Rotate(toX, toY)
+            % ROTATE Create an instance of the Rotate transformation
+            % Inputs:
+            %   - toX: The x location to rotate to
+            %   - toY: The y location to rotate to
             arguments
                 toX (1, 1) int32                   % The x location to rotate to
                 toY (1, 1) int32                   % The y location to rotate to

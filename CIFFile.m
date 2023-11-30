@@ -1,4 +1,7 @@
 classdef CIFFile < definitions.CIFWriter
+    % The CIFFile class can be used to generate Caltech Intermediate Format files using matlab.
+    % To get started, all one has to do is create a new instance of this class, providing a path to a new or existing .cif file.
+    % By using the methods in this class, layers and symbols can be created.
     properties (SetAccess = private)
         layers (1, :) definitions.Layer     % The layers that are being used in the file
         symbols (1, :) definitions.Symbol    % The symbols that are being used in the file
@@ -6,6 +9,9 @@ classdef CIFFile < definitions.CIFWriter
     
     methods
         function obj = CIFFile(filePath)
+            % CIFFile Create an instance of CIFFile, which creates a Caltech Intermediate Format file and can write the structure created using the instance to it.
+            % Inputs:
+            %   - filePath: The path to the (new) .cif file
             arguments
                 filePath string     % The path to where the .cif file should be generated
             end
@@ -49,6 +55,9 @@ classdef CIFFile < definitions.CIFWriter
         
         function lObj = createLayer(obj, name, styling)
             % CREATELAYER Create a new layer in the file
+            % Inputs:
+            %   - name: The name of the layer (as used by CleWin)
+            %   - styling: The optional styling of the layer, uses syntax of CleWin, will be updated later
             arguments
                 obj CIFFile
                 name string                                                 % The name of the layer (as used by CleWin)
@@ -72,6 +81,9 @@ classdef CIFFile < definitions.CIFWriter
         
         function sObj = createSymbol(obj, name, normalization)
             % CREATESYMBOL Create a new symbol in the file
+            % Inputs:
+            %   - name: The name of the symbol
+            %   - normalization: The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
             arguments
                 obj CIFFile
                 name string                     % The name of the symbol
