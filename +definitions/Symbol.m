@@ -1,9 +1,9 @@
 classdef Symbol < definitions.CIFWriter
     properties (SetAccess = private)
-        symbolId int32                              % The id of the symbol
-        name string                                 % The name of the symbol
-        normalization double                        % The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
-        geometries (1, :) = []                      % All defined geometries in the symbol
+        symbolId int32                          % The id of the symbol
+        name string                             % The name of the symbol
+        normalization double                    % The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
+        geometries (1, :) geometries.Geometry   % All defined geometries in the symbol
     end
     
     methods
@@ -50,6 +50,20 @@ classdef Symbol < definitions.CIFWriter
             
             % Write the close keyword
             obj.write("DF;");
+        end
+        
+        function csObj = callSymbol(obj, symbol)
+            % CALLSYMBOL Call a given symbol. Adds the symbol to the parent symbol and returns a new CallSymbol object to apply transformations
+            arguments
+                obj definitions.Symbol
+                symbol definitions.Symbol   % The Symbol that should be called
+            end
+            
+            % Create the geometry
+            csObj = geometries.CallSymbol(obj.fileHandle, symbol);
+            
+            % And add it to the list of geometries
+            obj.geometries(end+1) = csObj;
         end
     end
 end

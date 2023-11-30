@@ -1,6 +1,6 @@
 classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
     % CIFWriter Base class for writing data to the CIF file
-    properties (Access = private)
+    properties (SetAccess = private, GetAccess = protected)
         fileHandle double            % File handle to the file where the CIF data should be written to
     end
     

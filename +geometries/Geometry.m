@@ -1,4 +1,4 @@
-classdef (Abstract) Geometry < definitions.CIFWriter
+classdef (Abstract) Geometry < definitions.CIFWriter & matlab.mixin.Heterogeneous
     properties (SetAccess = private)
         layer definitions.Layer     % The layer the geometry uses
     end
