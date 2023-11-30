@@ -3,6 +3,10 @@ classdef (Abstract) Geometry < definitions.CIFWriter
         layer definitions.Layer     % The layer the geometry uses
     end
     
+    methods (Abstract)
+        obj = printFile(obj, lastLayer)
+    end
+    
     methods
         function obj = Geometry(fileHandle, layer)
             arguments
@@ -14,13 +18,10 @@ classdef (Abstract) Geometry < definitions.CIFWriter
             
             obj.layer = layer;
         end
+    end
+    
+    % Hide all handle methods
+    methods (Hidden)
         
-        function obj = printFile(obj, lastLayer)
-            arguments
-                obj
-                lastLayer int32     % The layer id of the last called layer
-            end
-            disp(lastLayer);
-        end
     end
 end

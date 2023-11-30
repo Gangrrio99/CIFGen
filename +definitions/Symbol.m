@@ -10,10 +10,10 @@ classdef Symbol < definitions.CIFWriter
         function obj = Symbol(fileHandle, symbolId, name, normalization)
             % Layer Create an instance of a Layer object that is responsible for managing the information about a layer type in a CIF design.
             arguments
-                fileHandle int32        % The file handle to the CIF file
-                symbolId int32          % The id of the symbol
-                name string             % The name of the symbol
-                normalization double    % The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
+                fileHandle (1, 1) int32         % The file handle to the CIF file
+                symbolId (1, 1) int32           % The id of the symbol
+                name string                     % The name of the symbol
+                normalization (1, 1) double     % The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
             end
             
             % Construct the superclass
