@@ -1,14 +1,14 @@
 classdef (Abstract) CIFWriter
     % CIFWriter Base class for writing data to the CIF file
     properties (Access = private)
-        fileHandle int32            % File handle to the file where the CIF data should be written to
+        fileHandle double            % File handle to the file where the CIF data should be written to
     end
     
     methods (Access = protected)
         function obj = write(obj, line)
             % write Write the generated line to the CIF file
             arguments
-                obj CIFWriter
+                obj definitions.CIFWriter
                 line string
             end
             fprintf(obj.fileHandle, "%s\n", line);
