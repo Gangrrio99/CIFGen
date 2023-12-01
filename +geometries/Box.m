@@ -9,6 +9,14 @@ classdef Box < geometries.Geometry
     
     methods
         function obj = Box(fileHandle, layer, length, width, center, direction)
+            % BOX Create an instance of the Box geometry
+            % Inputs:
+            %   - fileHandle: The file handle to the CIF file
+            %   - layer: The layer the geomettry uses
+            %   - length: The length of the box
+            %   - width: The width of the box
+            %   - center: The center of the box
+            %   - direction: The direction the box is looking at, perpendicular to the width
             arguments
                 fileHandle int32                % The file handle to the CIF file
                 layer definitions.Layer         % The layer the geomettry uses
@@ -28,6 +36,8 @@ classdef Box < geometries.Geometry
         
         function obj = setLength(obj, length)
             % SETLENGTH Set the length of the box
+            % Inputs:
+            %   - length: The length of the box
             arguments
                 obj geometries.Box
                 length (1, 1) uint32                % The length of the box
@@ -38,6 +48,8 @@ classdef Box < geometries.Geometry
         
         function obj = setWidth(obj, width)
             % SETWIDTH Set the width of the box
+            % Inputs:
+            %   - width: The width of the box
             arguments
                 obj geometries.Box
                 width (1, 1) uint32                 % The width of the box
@@ -48,6 +60,8 @@ classdef Box < geometries.Geometry
         
         function obj = setCenter(obj, center)
             % SETCENTER Set the center of the box
+            % Inputs:
+            %   - center: The center of the box [x, y]
             arguments
                 obj geometries.Box
                 center (1, 2) int32                 % The center of the box
@@ -58,6 +72,8 @@ classdef Box < geometries.Geometry
         
         function obj = setDirection(obj, direction)
             % SETDIRECTION Set the direction of the box
+            % Inputs:
+            %   - direction: The direction the box is looking at [x,y], perpendicular to the width
             arguments
                 obj geometries.Box
                 direction (1, 2) int32          % The direction the box is looking at, perpendicular to the width

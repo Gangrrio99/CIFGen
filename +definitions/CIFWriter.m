@@ -5,7 +5,7 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
         comments (1, :) string      % The comments that should be printed
     end
     
-    methods (Access = private, Hidden)
+    methods (Access = protected, Hidden)
         function obj = writeComments(obj)
             % WRITECOMMENTS Write the stored comments to the file
             
@@ -17,9 +17,7 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
             % Flush the comments
             obj.flushComments();
         end
-    end
-    
-    methods (Access = protected, Hidden)
+        
         function obj = write(obj, line)
             % write Write the generated line to the CIF file
             arguments
@@ -33,6 +31,12 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
             
             % Then we write the line to the file
             fprintf(obj.fileHandle, "%s\n", line);
+        end
+        
+        function obj = close(obj)
+            % CLOSE Closes the filehandle
+            fclose(obj.fileHandle);
+            obj.fileHandle = -1;
         end
     end
     
@@ -52,6 +56,8 @@ classdef (Abstract) CIFWriter < hiddensupers.HiddenHandle
         
         function obj = addComment(obj, comment)
             % ADDCOMMENT Add a comment to the list. Will print the comment next time CIFWriter.write is called
+            % Inputs:
+            %   - comment: The comment to add to the list
             arguments
                 obj definitions.CIFWriter
                 comment string

@@ -7,6 +7,10 @@ classdef CallSymbol < geometries.Geometry
     
     methods
         function obj = CallSymbol(fileHandle, symbol)
+            % CALLSYMBOL Create an instance of the CallSymbol geometry
+            % Inputs:
+            %   - fileHandle: The file handle to the CIF file
+            %   - symbol: The Symbol that should be called
             arguments
                 fileHandle int32            % The file handle to the CIF file
                 symbol definitions.Symbol   % The Symbol that should be called
@@ -33,6 +37,9 @@ classdef CallSymbol < geometries.Geometry
         
         function obj = transform(obj, toX, toY)
             % TRANSFORM Transform the symbol to a given set of coordinates
+            % Inputs:
+            %   - toX: The x location to transform to
+            %   - toY: The y location to transform to
             arguments
                 obj geometries.CallSymbol
                 toX (1, 1) int32                   % The x location to transform to
@@ -44,6 +51,8 @@ classdef CallSymbol < geometries.Geometry
         
         function obj = mirror(obj, overAxis)
             % MIRROR Mirror the symbol over the given axis (multiplies that coordinate by -1)
+            % Inputs:
+            %   - overAxis: The axis to mirror over, can be "X" or "Y"
             arguments
                 obj geometries.CallSymbol
                 overAxis string {ismember(overAxis, ["X", "Y"])} % The axis to mirror over
@@ -54,6 +63,9 @@ classdef CallSymbol < geometries.Geometry
         
         function obj = rotate(obj, toX, toY)
             % ROTATE Rotate the symbol over to the given coordinates
+            % Inputs:
+            %   - toX: The x location to rotate to
+            %   - toY: The y location to rotate to
             arguments
                 obj geometries.CallSymbol
                 toX (1, 1) int32                   % The x location to rotate to

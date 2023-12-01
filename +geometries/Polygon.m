@@ -6,9 +6,14 @@ classdef Polygon < geometries.Geometry
     
     methods
         function obj = Polygon(fileHandle, layer, initialXYs)
+            % POLYGON Create an instance of the Polygon geometry
+            % Inputs:
+            %   - fileHandle: The file handle to the CIF file
+            %   - layer: The layer the geometry uses
+            %   - initialXYs: Optional list with x and y coordinates of the polygon path
             arguments
                 fileHandle int32                % The file handle to the CIF file
-                layer definitions.Layer         % The layer the geomettry uses
+                layer definitions.Layer         % The layer the geometry uses
                 initialXYs (:, 2) int32 = []    % Optional list with x and y coordinates of the polygon path
             end
             
@@ -19,6 +24,9 @@ classdef Polygon < geometries.Geometry
         
         function obj = addPoint(obj, pointX, pointY)
             % ADDPOINT Add a single point to the polygon structure
+            % Inputs:
+            %   - pointX: The x coordinate of the point
+            %   - pointY: The y coordinate of the point
             arguments
                 obj geometries.Polygon
                 pointX (1, 1) int32
@@ -30,6 +38,9 @@ classdef Polygon < geometries.Geometry
         
         function obj = addPoints(obj, pointsX, pointsY)
             % ADDPOINTS Add multiple points to the polygon structure
+            % Inputs:
+            %   - pointsX: The x coordinates of the points
+            %   - pointsY: The y coordinates of the points
             arguments
                 obj geometries.Polygon
                 pointsX (:, 1) int32
