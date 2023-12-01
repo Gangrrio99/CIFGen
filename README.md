@@ -25,7 +25,7 @@ CIFGen is an object oriented based library to generate CIF files from within MAT
 simple maintance, and the possibility to add more functionality without the need to change a lot of the source code.
 
 One of the biggest issues in working with CIF, is keeping track of the IDs used for the different symbols. If one engineer adds a new symbol without informing the other, 
-this might lead into the same symbol being used twice. The same is the case with layers used in the design. To get rid of this, the library is inspired by a Factory design pattern. Instead of creating instances of different classes yourself, methods are called in, for example, the [CFIFile](./documentation/CIFFile.md) class, which will create either a layer of symbol for you. The class will also assign a unique ID to the new layer or symbol, ensuring that no IDs will be reused.
+this might lead to the same symbol being used twice. The same is the case with layers used in the design. To get rid of this, the library is inspired by a Factory design pattern. Instead of creating instances of different classes yourself, methods are called in, for example, the [CFIFile](./documentation/CIFFile.md) class, which will create either a layer or symbol for you. The class will also assign a unique ID to the new layer or symbol, ensuring that no IDs will be reused.
 
 ### Documentation
 Although the use of the library is not very complicated as will be visible in the example below, there has been made [documentation](./documentation/documentation.md) for all classes in the library.
