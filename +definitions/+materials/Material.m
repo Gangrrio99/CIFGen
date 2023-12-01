@@ -69,8 +69,8 @@ classdef Material < hiddensupers.HiddenHandle
             obj.outlineColor = [r, g, b];
         end
         
-        function styleStr = toString(obj)
-            % TOSTRING Convert the Material to a string
+        function styleStr = getMaterialString(obj)
+            % GETMATERIALSTRING Convert the Material to a string
             
             % Turn the fillStyle and outlineStyle into hex
             fillStyleHex = dec2hex(uint16(obj.fillStyle));
