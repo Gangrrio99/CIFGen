@@ -47,10 +47,10 @@ Since all functionality is wrapped within the data you are working with, it is v
 % Create a new .cif file
 cif = CIFFile("./design.cif");
 
-% Add comments explaining your design
+% Add optional comments explaining your design. This method can be called on each class in this library
 cif.addComment("Example .cif design using CIFGen");
 
-% Create two layers
+%% Create three layers
 l1 = cif.createLayer("Layer 1");
 % Only change the fillcolor after initialization
 l1.setFillColor(0, 255, 0);         
@@ -62,32 +62,36 @@ l1.setFillStyle("Horizontal");
 l2 = cif.createLayer("Layer 2", ...
     "fillColor", [255, 0, 0], "fillStyle", "DiagonalRight");
 
-% Create a layer with default color and style settings
+% Create a layer with default color and style settings (black and solid)
 l3 = cif.createLayer("Layer 3");
 
+%% Create symbols
 % Create our first symbol
-s1 = cif.createSymbol("Symbol 1", 1e-9); % We normalize to 1nm
+s1 = cif.createSymbol("Symbol 1", 1e-9); % Symbol's unit is 1nm
 s1.addComment("Our first symbol!");
 
 % Draw a box using layer 1, of 20 by 20, located at [0,0]
 s1.createBox(l1, 20, 20, [0, 0]);
-% Since the polygon uses the same layer, the layer call will only be
-% printed once
+% Create a polygon using layer one. Notice that the layer 
+% call will only be printed once in the output, as the polygon 
+% uses the same layer as the aforementioned box.
 poly = s1.createPolygon(l1);
 poly.addPoints(...
-    [-10, -5, 5, 10, 5, -5], ...
-    [0, 5, 10, 5, -5, -10] ...
+    [-10, -5, 5, 10, 5, -5], ...  % x coordinates
+    [0, 5, 10, 5, -5, -10] ...    % y coordinates
     );
 
 % Create a second symbol
 s2 = cif.createSymbol("Symbol 2", 1e-9);
 s2.createBox(l2, 40, 40, [0,0]);
-% Different layers, so multiple layer calls
+% The next box uses a different layer, so we have multiple 
+% layer calls in the output
 s2.createBox(l1, 60, 60, [0,0]);
 
-% Let's perform a symbol call!
+% Let's perform a symbol call! 
+% Here, we include symbol 1 in symbol 2
 sCall = s2.callSymbol(s1);
-% Transform the symbol call, you can chain any method call in the library!
+% Transform the symbol call. You can chain any method call in the library!
 sCall.transform(0,0).mirror("X").rotate(-3, 1);
 
 % Let's write the file!

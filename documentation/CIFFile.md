@@ -92,7 +92,7 @@ Create a new symbol in the file
 
 #### Inputs
 - `name`: *string* The name of the symbol
-- `normalization`: *double* The factor by which the geometry is normalized, so each value filled in for lengths is normalized by this factor by the user
+- `normalization`: *double* The unit length of each of the geometries in the symbol. Each of the geometries' values is multiplied by this factor to get to the physical length in the design.
 
 #### Example
 We first create a layer to use, create a new symbol, and add a simple box (see [Symbol.createBox](./definitions/Symbol.md#createbox) for more) to this symbol.
