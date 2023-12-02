@@ -53,22 +53,38 @@ classdef CIFFile < definitions.CIFWriter
             obj.close();
         end
         
-        function lObj = createLayer(obj, name, styling)
-            % CREATELAYER Create a new layer in the file
+        function lObj = createLayer(obj, name, materialProperties)
+            % CREATELAYER Create an instance of a Layer object that is responsible for managing the information about a layer type in a CIF design.
             % Inputs:
             %   - name: The name of the layer (as used by CleWin)
-            %   - styling: The optional styling of the layer, uses syntax of CleWin, will be updated later
+            %   - materialProperties.fillStyle: (Optional) The fill style of the material
+            %   - materialProperties.fillColor: (Optional) The rgb color of the fill of the material
+            %   - materialProperties.outlineStyle: (Optional) The outline style of the material
+            %   - materialProperties.outlineColor: (Optional) The rgb color of the outline of the material
             arguments
                 obj CIFFile
                 name string                                                 % The name of the layer (as used by CleWin)
-                styling (1, 2) string = ["0f808080" "0f808080"]             % The optional styling of the layer, uses syntax of CleWin, will be updated later
+                materialProperties.fillStyle definitions.materials.FillStyle = definitions.materials.FillStyle.Solid            % (Optional) The fill style of the material
+                materialProperties.fillColor (1, 3) uint8 = [0, 0, 0]                                                           % (Optional) The rgb color of the fill of the material
+                materialProperties.outlineStyle definitions.materials.OutlineStyle = definitions.materials.OutlineStyle.Solid   % (Optional) The outline style of the material
+                materialProperties.outlineColor (1, 3) uint8                                                        % (Optional) The rgb color of the outline of the material
+            end
+            
+            % Start by making sure that outline color is defined
+            if ~ismember("outlineColor", fieldnames(materialProperties))
+                materialProperties.outlineColor = materialProperties.fillColor;
             end
             
             % Get the id of the next layer
             layerId = length(obj.layers) + 1;
             
             % Create a new layer...
-            lObj = definitions.Layer(obj.fileHandle, layerId, name, styling);
+            lObj = definitions.Layer(obj.fileHandle, layerId, name, ...
+                "fillStyle", materialProperties.fillStyle, ...
+                "fillColor", materialProperties.fillColor, ...
+                "outlineStyle", materialProperties.outlineStyle, ...
+                "outlineColor", materialProperties.outlineColor ...
+                );
             
             % ...and add the layer to the file
             obj.layers(end + 1) = lObj;
