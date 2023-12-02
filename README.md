@@ -47,7 +47,8 @@ Since all functionality is wrapped within the data you are working with, it is v
 % Create a new .cif file
 cif = CIFFile("./design.cif");
 
-% Add optional comments explaining your design. This method can be called on each class in this library
+% Add optional comments explaining your design. 
+% This method can be called on each class in this library
 cif.addComment("Example .cif design using CIFGen");
 
 %% Create three layers
@@ -91,7 +92,8 @@ s2.createBox(l1, 60, 60, [0,0]);
 % Let's perform a symbol call! 
 % Here, we include symbol 1 in symbol 2
 sCall = s2.callSymbol(s1);
-% Transform the symbol call. You can chain any method call in the library!
+% Transform the symbol call. 
+% You can chain any method call in the library!
 sCall.transform(0,0).mirror("X").rotate(-3, 1);
 
 % Let's write the file!
