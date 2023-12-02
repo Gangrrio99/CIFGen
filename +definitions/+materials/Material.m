@@ -1,4 +1,5 @@
 classdef Material < hiddensupers.HiddenHandle
+    % MATERIAL Class that describes the material used by a layer, as shown in CleWin. The instance will describe the fill style, outline style, and colors used.
     properties
         fillStyle       definitions.materials.FillStyle     % The style of the fill of the laer
         fillColor       (1, 3) uint8
