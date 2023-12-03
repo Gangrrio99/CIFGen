@@ -5,6 +5,24 @@ classdef (Abstract) Geometry < definitions.CIFWriter & matlab.mixin.Heterogeneou
     
     methods (Abstract)
         obj = printFile(obj, lastLayer)
+        
+        % Mirror the current state of the geometry
+        obj = mirror(obj, overAxis)
+        
+        % Translate the current state of the geometry to [x, y]
+        obj = translate(obj, x, y)
+        
+        % Center the current state of the geometry to [0, 0]
+        obj = centerGeometry(obj)
+        
+        % Get the length along X
+        length = getXLength(obj)
+        
+        % Get the length along Y
+        length = getYLength(obj)
+        
+        % Get the current center of the geometry
+        center = getCenter(obj)
     end
     
     methods

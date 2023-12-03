@@ -103,4 +103,44 @@ classdef Box < geometries.Geometry
                 obj.direction(2)));
         end
     end
+    
+    % Implemented methods from abstract Geometry
+    methods
+        function obj = mirror(obj, overAxis)
+            arguments
+                obj geometries.Box
+                overAxis string {ismember(overAxis, ["X", "Y"])} % The axis to mirror over
+            end
+            if overAxis == "X"
+                obj.center(2) = obj.center(2)*-1;
+            else
+                obj.center(1) = obj.center(1)*-1;
+            end
+        end
+        
+        function obj = translate(obj, x, y)
+            arguments
+                obj geometries.Box
+                x (1, 1) double
+                y (1, 1) double
+            end
+            obj.center = obj.center + [x, y];
+        end
+        
+        function obj = centerGeometry(obj)
+            obj.center = [0, 0];
+        end
+        
+        function length = getXLength(obj)
+            % for [1, 0] -> s
+        end
+        
+        function length = getYLength(obj)
+            
+        end
+        
+        function center = getCenter(obj)
+            center = obj.center;
+        end
+    end
 end
